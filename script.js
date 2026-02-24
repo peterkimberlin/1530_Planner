@@ -239,4 +239,44 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // Comment Form Submission
+    const commentForm = document.getElementById('comment-form');
+    const formResponse = document.getElementById('form-response');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (commentForm) {
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.textContent = '접수 중...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(commentForm);
+            const data = Object.fromEntries(formData.entries());
+            data.totalCost = totalCost; // Include computed total
+
+            try {
+                const res = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+
+                if (res.ok) {
+                    formResponse.textContent = result.message || '성공적으로 접수되었습니다.';
+                    formResponse.className = 'form-response success';
+                    commentForm.reset();
+                } else {
+                    throw new Error(result.message || '오류가 발생했습니다.');
+                }
+            } catch (err) {
+                formResponse.textContent = err.message || '네트워크 오류가 발생했습니다.';
+                formResponse.className = 'form-response error';
+            } finally {
+                submitBtn.textContent = '문의 접수하기';
+                submitBtn.disabled = false;
+            }
+        });
+    }
 });
