@@ -621,3 +621,45 @@ h3 {
 .table-list.cons li {
     color: #f87171;
 }
+
+/* Floor Plans Image Gallery */
+.floor-plan-gallery {
+    margin-top: 1rem;
+}
+
+.floor-plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.floor-plan-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floor-plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: rgba(88, 166, 255, 0.4);
+}
+
+.floor-plan-card h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.floor-plan-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: #fff;
+}
