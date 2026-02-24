@@ -277,30 +277,35 @@
                             <h2>인테리어 옵션</h2>
                             <p class="section-desc">변경사항을 선택해 주세요.</p>
                             <div class="checkbox-group">
+                                <div class="quantity-card">
+                                    <div class="card-content">
+                                        <span class="card-title">시스템에어컨 - 실내기 2구</span>
+                                        <span class="card-desc">수량 선택에 따라 비용이 추가됩니다</span>
+                                        <span class="card-price unit-price">+₩52,000,000 / 대</span>
+                                    </div>
+                                    <div class="quantity-controls">
+                                        <button type="button" class="qty-btn minus"
+                                            onclick="updateQty('aircon-qty', -1); return false;">-</button>
+                                        <input type="number" id="aircon-qty" class="upgrade-item-qty" value="0" min="0"
+                                            max="20" data-price="52000000" readonly>
+                                        <button type="button" class="qty-btn plus"
+                                            onclick="updateQty('aircon-qty', 1); return false;">+</button>
+                                    </div>
+                                </div>
                                 <label class="checkbox-card">
-                                    <input type="checkbox" class="upgrade-item" value="52000000"
-                                        data-title="마스터 스위트룸 리모델링">
+                                    <input type="checkbox" class="upgrade-item" value="15000000" data-title="회의실 추가">
                                     <span class="card-content">
-                                        <span class="card-title">마스터 스위트룸 리모델링</span>
-                                        <span class="card-desc">고급 욕실 및 맞춤형 드레스룸</span>
-                                        <span class="card-price">+₩52,000,000</span>
-                                    </span>
-                                </label>
-                                <label class="checkbox-card">
-                                    <input type="checkbox" class="upgrade-item" value="32500000"
-                                        data-title="고급 주방 업그레이드">
-                                    <span class="card-content">
-                                        <span class="card-title">고급 주방 업그레이드</span>
-                                        <span class="card-desc">최고급 가전 및 대리석 아일랜드 식탁</span>
-                                        <span class="card-price">+₩32,500,000</span>
+                                        <span class="card-title">회의실 추가</span>
+                                        <span class="card-desc">방음 및 스마트 레이아웃 추가</span>
+                                        <span class="card-price">+₩15,000,000</span>
                                     </span>
                                 </label>
                                 <label class="checkbox-card">
                                     <input type="checkbox" class="upgrade-item" value="23400000"
-                                        data-title="테라스 발코니 추가">
+                                        data-title="바닥 및 천정 고급형">
                                     <span class="card-content">
-                                        <span class="card-title">테라스 발코니 추가</span>
-                                        <span class="card-desc">유리 난간 및 고급 티크 데크</span>
+                                        <span class="card-title">바닥 및 천정 고급형</span>
+                                        <span class="card-desc">고급 마감재 사용 및 텍스쳐 시공</span>
                                         <span class="card-price">+₩23,400,000</span>
                                     </span>
                                 </label>

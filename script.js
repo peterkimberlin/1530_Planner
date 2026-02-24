@@ -8,6 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const exteriorRadios = document.querySelectorAll('input[name="exterior"]');
     const upgradeCheckboxes = document.querySelectorAll('.upgrade-item');
+    const upgradeQtyInputs = document.querySelectorAll('.upgrade-item-qty');
+
+    window.updateQty = function (id, change) {
+        const input = document.getElementById(id);
+        if (!input) return;
+        let current = parseInt(input.value) || 0;
+        let min = parseInt(input.min) || 0;
+        let max = parseInt(input.max) || 20;
+        let newVal = current + change;
+        if (newVal >= min && newVal <= max) {
+            input.value = newVal;
+            input.dispatchEvent(new Event('change'));
+        }
+    };
 
     const grandTotalEl = document.getElementById('grand-total');
     const subtotalEl = document.getElementById('floor-subtotal-val');
@@ -93,6 +107,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        const floor2QtyInputs = document.getElementById('floor2-options').querySelectorAll('.upgrade-item-qty');
+        floor2QtyInputs.forEach(input => {
+            const qty = parseInt(input.value) || 0;
+            if (qty > 0) {
+                const price = parseInt(input.dataset.price) || 0;
+                const val = qty * price;
+                floor2Total += val;
+                totalCost += val;
+                if (activeFloorId === 'floor2') activeFloorSubtotal += val;
+            }
+        });
+
         // 3. Update DOM with animation effect
         animateValue(grandTotalEl, totalCost);
         subtotalEl.textContent = formatCurrency(activeFloorSubtotal);
@@ -162,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Listeners for inputs
     exteriorRadios.forEach(radio => radio.addEventListener('change', updateCalculator));
     upgradeCheckboxes.forEach(cb => cb.addEventListener('change', updateCalculator));
+    upgradeQtyInputs.forEach(input => input.addEventListener('change', updateCalculator));
 
     // Initialize
     exteriorPreview.style.transition = 'opacity 0.2s ease-in-out';
