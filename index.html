@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리모델링 비용 계산기</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>리모델링X</h1>
+            <p>건물 리모델링 예상 비용을 계산해 보세요</p>
+            <div class="total-cost-badge">
+                <span>예상 총 비용:</span>
+                <span id="grand-total">$0</span>
+            </div>
+        </header>
+
+        <nav class="main-tabs">
+            <button class="tab-btn active" data-target="overview">개요</button>
+            <button class="tab-btn" data-target="floorplans">평면도</button>
+            <button class="tab-btn" data-target="calculation">총 비용 계산</button>
+        </nav>
+
+        <main>
+            <!-- Overview Tab -->
+            <section id="overview" class="tab-content active">
+                <div class="split-view">
+                    <div class="image-section panel">
+                        <h2>현재 상태</h2>
+                        <div class="image-wrapper hint-hover">
+                            <img src="assets/rusty_before.jpg" alt="Current Building">
+                        </div>
+                    </div>
+
+                    <div class="options-section panel">
+                        <h2>외장 리모델링 옵션</h2>
+                        <p class="section-desc">원하시는 외관 디자인 방향을 선택해 주세요.</p>
+
+                        <div class="radio-group" id="exterior-options">
+                            <label class="radio-card">
+                                <input type="radio" name="exterior" value="325260469"
+                                    data-title="옵션 A: 징크 2면 + 후면(징크) / 나머지 1면 외벽보강" checked>
+                                <span class="card-content">
+                                    <span class="card-title">옵션 A: 징크 2면 + 후면(징크) / 나머지 1면 외벽보강</span>
+                                    <span class="card-price">₩325,260,469</span>
+                                </span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="exterior" value="407449970" data-title="옵션 B: 징크 4면"
+                                    data-img="assets/renovated_modern.png">
+                                <span class="card-content">
+                                    <span class="card-title">옵션 B: 징크 4면</span>
+                                    <span class="card-price">₩407,449,970</span>
+                                </span>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="exterior" value="683538497"
+                                    data-title="옵션 C: 커튼월 2면(전면+측면) + 징크 2면" data-img="assets/illustrated_after.jpg">
+                                <span class="card-content">
+                                    <span class="card-title">옵션 C: 커튼월 2면(전면+측면) + 징크 2면</span>
+                                    <span class="card-price">₩683,538,497</span>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="preview-section">
+                            <h3>예상 결과</h3>
+                            <div class="image-wrapper target-image" id="exterior-preview-wrapper">
+                                <img src="assets/rusty_before.jpg" id="exterior-preview" alt="Desired Outcome">
+                                <div class="overlay-text empty-state">옵션을 선택해 주세요</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Floor Plans Tab -->
+            <section id="floorplans" class="tab-content">
+                <nav class="sub-tabs">
+                    <button class="sub-tab-btn active" data-target="floor1">상업용 층</button>
+                    <button class="sub-tab-btn" data-target="floor2">주거용 층</button>
+                </nav>
+
+                <div class="split-view">
+                    <div class="image-section panel">
+                        <div id="floor1-img" class="floor-img active">
+                            <img src="assets/floor_plan_1.png" alt="Floor Plan 1">
+                        </div>
+                        <div id="floor2-img" class="floor-img">
+                            <img src="assets/floor_plan_2.png" alt="Floor Plan 2">
+                        </div>
+                    </div>
+
+                    <div class="options-section panel">
+                        <div id="floor1-options" class="floor-options active">
+                            <h2>상업 공간 업그레이드</h2>
+                            <p class="section-desc">오피스 층을 위한 변경 사항을 선택해 주세요.</p>
+                            <div class="checkbox-group">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" class="upgrade-item" value="39000000" data-title="오픈 플랜 전환">
+                                    <span class="card-content">
+                                        <span class="card-title">오픈 플랜 전환</span>
+                                        <span class="card-desc">벽을 허물어 오픈형 사무실 구조로 변경</span>
+                                        <span class="card-price">+₩39,000,000</span>
+                                    </span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" class="upgrade-item" value="19500000" data-title="추가 회의실 구성">
+                                    <span class="card-content">
+                                        <span class="card-title">추가 회의실 구성</span>
+                                        <span class="card-desc">유리 파티션 및 AV 시스템 설치</span>
+                                        <span class="card-price">+₩19,500,000</span>
+                                    </span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" class="upgrade-item" value="10400000"
+                                        data-title="스마트 조명 업그레이드">
+                                    <span class="card-content">
+                                        <span class="card-title">스마트 조명 업그레이드</span>
+                                        <span class="card-desc">에너지 효율적인 IoT 조명 시스템</span>
+                                        <span class="card-price">+₩10,400,000</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div id="floor2-options" class="floor-options">
+                            <h2>주거 공간 업그레이드</h2>
+                            <p class="section-desc">주거 층을 위한 변경 사항을 선택해 주세요.</p>
+                            <div class="checkbox-group">
+                                <label class="checkbox-card">
+                                    <input type="checkbox" class="upgrade-item" value="52000000"
+                                        data-title="마스터 스위트룸 리모델링">
+                                    <span class="card-content">
+                                        <span class="card-title">마스터 스위트룸 리모델링</span>
+                                        <span class="card-desc">고급 욕실 및 맞춤형 드레스룸</span>
+                                        <span class="card-price">+₩52,000,000</span>
+                                    </span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" class="upgrade-item" value="32500000"
+                                        data-title="고급 주방 업그레이드">
+                                    <span class="card-content">
+                                        <span class="card-title">고급 주방 업그레이드</span>
+                                        <span class="card-desc">최고급 가전 및 대리석 아일랜드 식탁</span>
+                                        <span class="card-price">+₩32,500,000</span>
+                                    </span>
+                                </label>
+                                <label class="checkbox-card">
+                                    <input type="checkbox" class="upgrade-item" value="23400000"
+                                        data-title="테라스 발코니 추가">
+                                    <span class="card-content">
+                                        <span class="card-title">테라스 발코니 추가</span>
+                                        <span class="card-desc">유리 난간 및 고급 티크 데크</span>
+                                        <span class="card-price">+₩23,400,000</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="floor-subtotal">
+                            <h3>층별 업그레이드 합계: <span id="floor-subtotal-val">$0</span></h3>
+                            <p>외관 스타일링 비용은 포함되지 않습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Total Calculation Tab -->
+            <section id="calculation" class="tab-content">
+                <div class="panel">
+                    <h2>총 비용 계산 상세</h2>
+                    <p class="section-desc">선택하신 리모델링 옵션과 총 비용을 확인하세요.</p>
+                    <div class="breakdown-table">
+                        <div class="breakdown-row header">
+                            <span>항목 설명</span>
+                            <span>예상 비용</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="item-name" id="calc-exterior-name">옵션 A: 징크 2면 + 후면(징크) / 나머지 1면 외벽보강</span>
+                            <span class="item-cost" id="calc-exterior-cost">₩325,260,469</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="item-name">상업 공간 업그레이드</span>
+                            <span class="item-cost" id="calc-floor1-cost">₩0</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="item-name">주거 공간 업그레이드</span>
+                            <span class="item-cost" id="calc-floor2-cost">₩0</span>
+                        </div>
+                        <div class="breakdown-row total">
+                            <span>총 합계 (부가세 포함)</span>
+                            <span id="calc-summary-total">₩325,260,469</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
