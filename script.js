@@ -110,9 +110,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const floor2QtyInputs = document.getElementById('floor2-options').querySelectorAll('.upgrade-item-qty');
         floor2QtyInputs.forEach(input => {
             const qty = parseInt(input.value) || 0;
+            const price = parseInt(input.dataset.price) || 0;
+            const val = qty * price;
+
+            // Display interim sum in the card
+            if (input.id === 'aircon-qty') {
+                document.getElementById('aircon-sum').textContent = `+${formatCurrency(val)}`;
+                const quantityCard = input.closest('.quantity-mode');
+                if (qty > 0) {
+                    quantityCard.classList.add('has-value');
+                } else {
+                    quantityCard.classList.remove('has-value');
+                }
+            }
+
             if (qty > 0) {
-                const price = parseInt(input.dataset.price) || 0;
-                const val = qty * price;
                 floor2Total += val;
                 totalCost += val;
                 if (activeFloorId === 'floor2') activeFloorSubtotal += val;
