@@ -729,3 +729,42 @@ h3 {
     color: #bbb;
     text-decoration: none;
 }
+
+/* Download Button Styles */
+.section-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.section-header-row .section-desc {
+    margin-bottom: 0;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--primary);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+    background: rgba(88, 166, 255, 0.2);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.download-btn svg {
+    margin-top: -2px;
+}
