@@ -533,3 +533,91 @@ h3 {
 .breakdown-row.total .item-cost {
     color: #4ade80;
 }
+
+/* Sleek Comparison Table */
+.comparison-panel {
+    margin-top: 2.5rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    margin-top: 1rem;
+}
+
+.sleek-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.sleek-table th,
+.sleek-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+.sleek-table thead {
+    background: rgba(88, 166, 255, 0.08);
+}
+
+.sleek-table th {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--primary);
+    white-space: nowrap;
+}
+
+.sleek-table tbody tr {
+    transition: background 0.3s;
+}
+
+.sleek-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.sleek-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sleek-table .opt-col {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    text-align: center;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.2);
+    width: 60px;
+}
+
+.sleek-table td {
+    color: #c9d1d9;
+}
+
+.table-list {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.table-list li {
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+}
+
+.table-list li:last-child {
+    margin-bottom: 0;
+}
+
+.table-list.pros li {
+    color: #4ade80;
+}
+
+.table-list.cons li {
+    color: #f87171;
+}
