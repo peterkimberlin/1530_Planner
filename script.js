@@ -169,4 +169,35 @@ document.addEventListener('DOMContentLoaded', () => {
     grandTotalEl.style.display = 'inline-block';
 
     updateCalculator();
+
+    // Image Zoom Modal Logic
+    const modal = document.getElementById("image-modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".close-modal");
+    const zoomableImages = document.querySelectorAll('.zoomable');
+
+    zoomableImages.forEach(img => {
+        img.addEventListener('click', function () {
+            modal.style.display = "flex";
+            // trigger reflow
+            void modal.offsetWidth;
+            modal.classList.add('show');
+            modalImg.src = this.src;
+        });
+    });
+
+    const closeModal = () => {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 300); // match CSS transition duration
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
 });
