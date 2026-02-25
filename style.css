@@ -600,6 +600,7 @@ h3 {
     letter-spacing: 0.5px;
     border-bottom: 2px solid var(--primary);
     white-space: nowrap;
+    min-width: 80px;
 }
 
 .sleek-table tbody tr {
@@ -626,6 +627,7 @@ h3 {
 
 .sleek-table td {
     color: #c9d1d9;
+    min-width: 120px;
 }
 
 .table-list {
@@ -978,5 +980,16 @@ h3 {
 @media (max-width: 600px) {
     .form-row {
         grid-template-columns: 1fr;
+    }
+
+    .sleek-table th,
+    .sleek-table td {
+        white-space: normal;
+        min-width: unset;
+        word-break: keep-all;
+    }
+
+    .sleek-table td:nth-child(2) {
+        min-width: 140px;
     }
 }
