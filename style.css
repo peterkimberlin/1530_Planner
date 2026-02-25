@@ -984,12 +984,15 @@ h3 {
 
     .sleek-table th,
     .sleek-table td {
+        padding: 0.8rem 0.6rem;
+        font-size: 0.9rem;
         white-space: normal;
         min-width: unset;
         word-break: keep-all;
     }
 
-    .sleek-table td:nth-child(2) {
-        min-width: 140px;
+    .sleek-table .opt-col {
+        width: 40px;
+        font-size: 1rem;
     }
 }
